@@ -1,8 +1,9 @@
-module.exports = () => {
 import fetch from "node-fetch";
 // Require the necessary discord.js classes
 import { Client } from "discord.js";
 import Discord from "discord.js";
+
+module.exports = () => {
 
 if(!process.env.DISCORD_BOT_TOKEN || !process.env.GIPHY_TOKEN) {
     console.error("🚨 Couldn't find environment variable");
