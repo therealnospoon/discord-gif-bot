@@ -1,7 +1,7 @@
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 // Require the necessary discord.js classes
-import { Client } from "discord.js";
-import Discord from "discord.js";
+const { Client } = require("discord.js");
+const Discord = require("discord.js");
 
 module.exports = () => {
 
