@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon",
+    "dev": "dotenv -- nodemon",
     "docker:build": "dotenv -- ./docker-build",
     "docker:run": "dotenv -- ./docker-run"
   },
@@ -17,8 +17,8 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "cross-fetch": "^3.1.4",
     "discord.js": "^13.3.1",
-    "express": "^4.17.1",
-    "node-fetch": "^3.1.0"
+    "express": "^4.17.1"
   }
 }
