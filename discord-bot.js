@@ -1,7 +1,7 @@
-const fetch = require("node-fetch");
+const fetch = require("cross-fetch");
 // Require the necessary discord.js classes
 const Discord = require("discord.js");
-// const { Client } = require("discord.js");
+const { Client } = require("discord.js");
 
 module.exports = () => {
 
@@ -10,7 +10,7 @@ if(!process.env.DISCORD_BOT_TOKEN || !process.env.GIPHY_TOKEN) {
 }
 
 // Create a new client instance
-const client = new Discord.Client({ intents : [ "GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES" ] });
+const client = new Client({ intents : [ "GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES" ] });
 
 
 // Kick off services, start message listener
