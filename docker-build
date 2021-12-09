@@ -1,0 +1,2 @@
+!#/bin/bash
+docker build -t $npm_package_name:latest .

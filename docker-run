@@ -1,0 +1,6 @@
+!#/bin/bash
+docker run \
+-e GIPHY_TOKEN=$GIPHY_TOKEN \
+-e DISCORD_BOT_TOKEN=$DISCORD_BOT_TOKEN \
+-p 8080:8080 \
+$npm_package_name:latest

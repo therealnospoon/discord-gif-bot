@@ -3,10 +3,6 @@ import fetch from "node-fetch";
 import { Client } from "discord.js";
 import Discord from "discord.js";
 
-import dotenv from "dotenv";
-
-dotenv.config();
-
 if(!process.env.DISCORD_BOT_TOKEN || !process.env.GIPHY_TOKEN) {
     console.error("🚨 Couldn't find environment variable");
 }
@@ -16,10 +12,6 @@ const client = new Client({ intents : [ "GUILDS", "GUILD_MESSAGES", "DIRECT_MESS
 
 
 // Kick off services, start message listener
-const setAct = (str, type) => {
-    client.user.setActivity(str, type);
-}
-
 client.on("messageCreate", (message) => {
     if(message.author.bot) {
         return false;
@@ -58,7 +50,7 @@ client.on("messageCreate", (message) => {
                 .setTitle(giphy.searchTerm)
                 .setTimestamp()
                 .setImage(gifUrl)
-                .setThumbnail(gifJSON.data.avatar_url)
+                .setFooter("Powered by Giphy")
 
                 message.channel.send({embeds : [embed]})
             } catch (error) {
