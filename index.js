@@ -1,6 +1,6 @@
-import express from "express";
+const express = require("express");
 
-import startDiscordBot from "./discord-bot.js";
+const startDiscordBot = require("./discord-bot.js");
 
 const app = express();
 app.get("/", { status: "healthy" });
