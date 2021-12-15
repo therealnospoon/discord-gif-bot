@@ -3,6 +3,9 @@ const express = require("express");
 const startDiscordBot = require("./discord-bot.js");
 
 const app = express();
+
+app.use(express.static('public'))
+
 app.get("/", (req, res) => res.send({ status: "healthy" }));
 
 const port = process.env.PORT || 8080;

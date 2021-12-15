@@ -1,7 +1,7 @@
 const fetch = require("cross-fetch");
-// Require the necessary discord.js classes
 const Discord = require("discord.js");
 const { Client } = require("discord.js");
+const path = require("path");
 
 module.exports = () => {
 
@@ -20,7 +20,7 @@ client.on("messageCreate", (message) => {
     }
 
     const commands = {
-        "gif": async (msg) => {
+        "!gif": async (msg) => {
             const searchTerms = msg.split(" ").slice(1, msg.length).join(" ");
             const giphy = {
                 baseURL: "https://api.giphy.com/v1/gifs/translate",
@@ -48,13 +48,14 @@ client.on("messageCreate", (message) => {
                 const gifResult = await response;
                 const gifJSON = await gifResult.json();
                 const gifUrl = await gifJSON.data.images.original.url;
+                
                 const embed = new Discord.MessageEmbed()
                 .setTitle(giphy.searchTerm)
-                .setTimestamp()
                 .setImage(gifUrl)
-                .setFooter("Powered by Giphy")
+                // .setThumbnail('attachment://giphy.png')
+                .setFooter('','./giphy.png')
 
-                message.channel.send({embeds : [embed]})
+                message.channel.send({embeds : [embed], files: [file]})
             } catch (error) {
                 console.log(error)
                 message.channel.send("Sorry, no gif found")
