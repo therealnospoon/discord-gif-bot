@@ -1,7 +1,6 @@
 const fetch = require("cross-fetch");
-const Discord = require("discord.js");
 
-module.exports = async (cmd, wordArr) => {
+module.exports = async (message, wordArr) => {
     const searchTerms = wordArr.join(" ");
     const giphy = {
         baseURL: "https://api.giphy.com/v1/gifs/translate",
@@ -32,11 +31,7 @@ module.exports = async (cmd, wordArr) => {
 
         const giphyBranding = "https://boiling-fortress-52817.herokuapp.com/giphy.png"
         
-        const embed = new Discord.MessageEmbed()
-        .setTitle(giphy.searchTerm)
-        .setImage(gifUrl)
-        
-        return embed
+        message.channel.send({content: `${searchTerms.toUpperCase()}`, files: [gifUrl, giphyBranding]})
     } catch (error) {
         console.log(error)
     }

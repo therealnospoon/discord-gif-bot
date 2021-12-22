@@ -24,7 +24,7 @@ module.exports = async (message) => {
 
         const commandFunction = require(commandPath)
 
-        message.channel.send({embeds : [await commandFunction(commandName, args)]});
+        commandFunction(message, args);
 
     } catch (error) {
         console.log(error);
