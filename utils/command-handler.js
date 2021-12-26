@@ -17,8 +17,12 @@ module.exports = async (message) => {
 
         const fileExists = fs.existsSync(commandPath);
 
+        //Invalid command path handler
         if (!fileExists) {
-            console.log("invalid command", commandName, args)
+            const commandFiles =  await fs.promises.readdir(path.join(__dirname, "../commands/"));
+            const commandList = commandFiles.map(fileName => "• !" + fileName.replace('.js', ''))
+            message.reply(`Oops! INVALID COMMAND: !${commandName} \n------------------\n Available list of commands are:\n ${commandList}`)
+            commandListhelper()
             return false;
         }
 
